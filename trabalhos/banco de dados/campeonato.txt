@@ -1,0 +1,33 @@
+CREATE TABLE equipes(
+  nome_PK VARCHAR(15) NOT NULL,
+  numero_integrantes INT NOT NULL,
+  escola VARCHAR(30) NOT NULL,
+  monitor VARCHAR(15) NOT NULL,
+  PRIMARY KEY(nome_PK)
+  )
+  
+  CREATE TABLE escola(
+    nome VARCHAR(30) NOT NULL,
+    numero_equipes INT NOT NULL,
+    endereco_PK VARCHAR(20) NOT NULL,
+    nome_equipe_FK VARCHAR(10) NOT NULL,
+    PRIMARY KEY(endereco_PK),
+    FOREIGN KEY(nome_equipe_FK) REFERENCES equipes(nome_PK)
+    )
+    
+    CREATE TABLE projetos(
+      nome VARCHAR(10) NOT NULL,
+      identificador_projeto_PK VARCHAR(5) NOT NULL,
+      nome_equipe_FK VARCHAR (10) NOT NULL,
+      PRIMARY KEY(identificador_projeto_PK),
+      FOREIGN KEY(nome_equipe_FK) REFERENCES equipes(nome_PK)
+      )
+      
+      CREATE TABLE integrantes(
+        noem VARCHAR(40) NOT NULL,
+        nome_equipe_FK VARCHAR(10) NOT NULL,
+        idade INT NOT NULL,
+        CPF_PK VARCHAR(11) NOT NULL,
+        PRIMARY KEY(CPF_PK),
+        FOREIGN KEY(nome_equipe_FK) REFERENCES equipes(nome_PK)
+        )
